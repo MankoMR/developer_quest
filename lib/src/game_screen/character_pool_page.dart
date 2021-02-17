@@ -127,7 +127,7 @@ class CharacterDisplay extends StatelessWidget {
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(10));
 
   void _showModal(BuildContext context) {
-    var character = Provider.of<Character>(context);
+    var character = Provider.of<Character>(context, listen: false);
     showDialog<void>(
         context: context,
         builder: (BuildContext context) {

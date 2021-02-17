@@ -27,7 +27,7 @@ class TaskListItem extends StatelessWidget {
           break;
         case MiniGame.chomp:
           // Time to face chompy, temporarily pause the game.
-          var world = Provider.of<World>(context);
+          var world = Provider.of<World>(context, listen: false);
           world.pause();
           Navigator.of(context)
               .pushNamed(CodeChomper.miniGameRouteName,
@@ -42,7 +42,7 @@ class TaskListItem extends StatelessWidget {
         case MiniGame.sphinx:
           {
             // Time to face the Sphinx, game is effectively over.
-            var world = Provider.of<World>(context);
+            var world = Provider.of<World>(context, listen: false);
             world.pause();
 
             Navigator.of(context)
