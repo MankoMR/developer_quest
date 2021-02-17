@@ -166,7 +166,7 @@ class __BottomNavigationButtonState extends State<_BottomNavigationButton> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Stack(
-                overflow: Overflow.visible,
+                clipBehavior: Clip.none,
                 children: [
                   Padding(
                     padding: widget.padding,
