@@ -9,7 +9,7 @@ void main() {
 
     await tester.pumpWidget(
       ChangeNotifierProvider(
-        builder: (_) => World(),
+        create: (_) => World(),
         child: MaterialApp(
           home: Consumer<World>(
             builder: (context, world, child) => FlatButton(
