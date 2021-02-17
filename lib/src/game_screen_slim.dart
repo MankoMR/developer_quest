@@ -83,14 +83,14 @@ class GameScreenSlimState extends State<GameScreenSlim> {
         children: [
           Consumer<CharacterPool>(
             builder: (context, characterPool, child) => _BottomNavigationButton(
-                  'assets/flare/TeamIcon.flr',
-                  label: 'Team',
-                  tap: () => _showPageIndex(0),
-                  isSelected: _index == 0,
-                  hasNotification: characterPool.isUpgradeAvailable,
-                  iconSize: const Size(25, 29),
-                  padding: const EdgeInsets.only(top: 10),
-                ),
+              'assets/flare/TeamIcon.flr',
+              label: 'Team',
+              tap: () => _showPageIndex(0),
+              isSelected: _index == 0,
+              hasNotification: characterPool.isUpgradeAvailable,
+              iconSize: const Size(25, 29),
+              padding: const EdgeInsets.only(top: 10),
+            ),
           ),
           _BottomNavigationButton(
             'assets/flare/TasksIcon.flr',

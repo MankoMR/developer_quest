@@ -167,6 +167,21 @@ class _GameOverScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var buttonStyle =
+        Theme.of(context).textButtonTheme.style ?? const ButtonStyle();
+    buttonStyle = buttonStyle.copyWith(
+      padding: MaterialStateProperty.all(
+        const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+      ),
+      side: MaterialStateProperty.all(
+        const BorderSide(width: 1, color: chompBlue),
+      ),
+      shape: MaterialStateProperty.all(
+          const RoundedRectangleBorder(side: BorderSide.none)),
+      backgroundColor: MaterialStateProperty.all(
+        const Color.fromRGBO(27, 26, 68, 1),
+      ),
+    );
     return IgnorePointer(
       ignoring: !isGameOver,
       child: AnimatedContainer(
@@ -191,12 +206,9 @@ class _GameOverScreen extends StatelessWidget {
                     style: chompTextStyle.apply(fontSizeDelta: 26),
                   ),
                   const SizedBox(height: 30),
-                  FlatButton(
+                  TextButton(
+                    style: buttonStyle,
                     onPressed: () => Navigator.pop(context, null),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 10),
-                    color: const Color.fromRGBO(27, 26, 68, 1),
-                    shape: Border.all(width: 1, color: chompBlue),
                     child: Text(
                       'CONTINUE',
                       style: chompTextStyle.apply(fontSizeDelta: 8),
@@ -353,17 +365,17 @@ class _ChompyKeyState extends State<_ChompyKey>
       child: AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) => Container(
-              margin: const EdgeInsets.all(_keyPadding / 2),
-              height: 42,
-              width: widget.width,
-              decoration: BoxDecoration(
-                color: _colorTween.value,
-                border: Border.all(
-                  color: chompBlue.withOpacity(0.5),
-                  width: 1,
-                ),
-              ),
+          margin: const EdgeInsets.all(_keyPadding / 2),
+          height: 42,
+          width: widget.width,
+          decoration: BoxDecoration(
+            color: _colorTween.value,
+            border: Border.all(
+              color: chompBlue.withOpacity(0.5),
+              width: 1,
             ),
+          ),
+        ),
       ),
     );
   }

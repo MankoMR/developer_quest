@@ -64,45 +64,40 @@ class CharacterImage extends StatelessWidget {
         constraints: const BoxConstraints(
           maxHeight: modalMaxWidth * 0.75,
         ),
-        child: Stack(
-          children: [
-            Positioned.fill(
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Color.fromRGBO(25, 25, 30, 1),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
+        child: Material(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
+          ),
+          color: const Color.fromRGBO(25, 25, 30, 1),
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: FlareActor(characterStyle.flare,
+                    alignment: Alignment.bottomCenter,
+                    shouldClip: false,
+                    fit: BoxFit.contain,
+                    animation: 'idle',
+                    controller: _controls),
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: ButtonTheme(
+                  minWidth: 0,
+                  child: IconButton(
+                    key: const ValueKey('close-character-modal'),
+                    padding: const EdgeInsets.all(0),
+                    onPressed: () => Navigator.pop(context, null),
+                    icon: const Icon(
+                      Icons.cancel,
+                      color: Color.fromRGBO(250, 250, 255, .5),
+                      semanticLabel: "Close",
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Positioned.fill(
-              child: FlareActor(characterStyle.flare,
-                  alignment: Alignment.bottomCenter,
-                  shouldClip: false,
-                  fit: BoxFit.contain,
-                  animation: 'idle',
-                  controller: _controls),
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: ButtonTheme(
-                minWidth: 0,
-                child: FlatButton(
-                  key: const ValueKey('close-character-modal'),
-                  padding: const EdgeInsets.all(0),
-                  shape: null,
-                  onPressed: () => Navigator.pop(context, null),
-                  child: const Icon(
-                    Icons.cancel,
-                    color: Color.fromRGBO(250, 250, 255, .5),
-                    semanticLabel: "Close",
-                  ),
-                ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

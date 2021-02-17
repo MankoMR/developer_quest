@@ -25,6 +25,23 @@ class WideButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var buttonStyle =
+        Theme.of(context).textButtonTheme.style ?? const ButtonStyle();
+    buttonStyle = buttonStyle.copyWith(
+      padding: MaterialStateProperty.all(
+        EdgeInsets.only(
+            left: 20 + paddingTweak.left,
+            right: 20 + paddingTweak.right,
+            top: 11 + paddingTweak.top,
+            bottom: 11 + paddingTweak.bottom),
+      ),
+      shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(9),
+        ),
+      ),
+      backgroundColor: MaterialStateProperty.all(background),
+    );
     return Container(
       constraints: const BoxConstraints(minWidth: double.infinity),
       decoration: shadowColor != null
@@ -37,18 +54,10 @@ class WideButton extends StatelessWidget {
               ],
             )
           : null,
-      child: FlatButton(
+      child: TextButton(
           key: buttonKey,
-          padding: EdgeInsets.only(
-              left: 20 + paddingTweak.left,
-              right: 20 + paddingTweak.right,
-              top: 11 + paddingTweak.top,
-              bottom: 11 + paddingTweak.bottom),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(9),
-          ),
+          style: buttonStyle,
           onPressed: enabled ? onPressed : null,
-          color: background,
           child: child),
     );
   }
