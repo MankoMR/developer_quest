@@ -79,7 +79,7 @@ class SuccessRoute extends PageRoute<Animation<double>> {
     // animation depending on whether the sphinx is animating on or off the
     // screen.
     final forwardCurveTween = CurveTween(curve: Curves.easeIn)
-        .chain(CurveTween(curve: Interval(0, 0.4)));
+        .chain(CurveTween(curve: const Interval(0, 0.4)));
     final forwardOffsetAnimation =
         offsetTween.chain(forwardCurveTween).animate(animation);
     final forwardScaleAnimation =
@@ -88,7 +88,7 @@ class SuccessRoute extends PageRoute<Animation<double>> {
     // Play the offset and scale animations immediately when the sphinx is
     // dismissed
     final reverseCurveTween = CurveTween(curve: Curves.easeIn)
-        .chain(CurveTween(curve: Interval(0.6, 1)));
+        .chain(CurveTween(curve: const Interval(0.6, 1)));
     final reverseOffsetAnimation =
         offsetTween.chain(reverseCurveTween).animate(animation);
     final reverseScaleAnimation =
@@ -96,11 +96,11 @@ class SuccessRoute extends PageRoute<Animation<double>> {
 
     // Setup the animations for the glasses
     final glassesOpacityAnimation = Tween<double>(begin: 0, end: 1)
-        .chain(CurveTween(curve: Interval(0.4, 0.6)))
+        .chain(CurveTween(curve: const Interval(0.4, 0.6)))
         .animate(animation);
     final glassesOffsetAnimation =
         Tween<Offset>(begin: const Offset(0, -50), end: const Offset(0, 0))
-            .chain(CurveTween(curve: Interval(0.6, 1)))
+            .chain(CurveTween(curve: const Interval(0.6, 1)))
             .animate(animation);
 
     void proceed() => Navigator.pop(context, animation);

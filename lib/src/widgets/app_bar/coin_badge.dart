@@ -4,7 +4,8 @@ import 'package:dev_rpg/src/widgets/app_bar/stat_badge.dart';
 /// Visually indicates the amount of capital the [Company] has amassed for this
 /// game session.
 class CoinBadge extends StatBadge<int> {
-  CoinBadge(StatValue<int> statValue, {double scale = 1, bool isWide = false})
+  const CoinBadge(StatValue<int> statValue,
+      {double scale = 1, bool isWide = false})
       : super('Capital', statValue,
             flare: 'assets/flare/Coin.flr', scale: scale, isWide: isWide);
 
