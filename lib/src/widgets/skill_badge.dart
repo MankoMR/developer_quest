@@ -19,27 +19,24 @@ class SkillBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: skillColor[skill],
-          borderRadius: const BorderRadius.all(
-            Radius.circular(5),
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: skillColor[skill],
+        borderRadius: const BorderRadius.all(
+          Radius.circular(5),
+        ),
+      ),
+      child: Row(
+        children: [
+          SkillIcon(skill),
+          const SizedBox(width: 5),
+          Text(
+            skillDisplayName[skill].toUpperCase(),
+            style:
+                buttonTextStyle.apply(fontSizeDelta: -4, color: Colors.white),
           ),
-        ),
-        child: Row(
-          children: [
-            SkillIcon(skill),
-            const SizedBox(width: 5),
-            Text(
-              skillDisplayName[skill].toUpperCase(),
-              style:
-                  buttonTextStyle.apply(fontSizeDelta: -4, color: Colors.white),
-            ),
-          ],
-        ),
+        ],
       ),
     );
   }
